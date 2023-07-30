@@ -16,12 +16,10 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+a {
+  @apply underline text-white hover:text-parole-rose visited:text-parole-rose active:border active:border-parole-rose transition-colors;
+}
+
+.authInput {
+  @apply bg-parole-base border border-dotted border-white focus:outline-parole-rose;
 }

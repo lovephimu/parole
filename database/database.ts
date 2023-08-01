@@ -4,8 +4,14 @@ import { sql } from './connect';
 export type User = {
   id: number;
   username: string;
-  passwordHash: string;
+};
+
+export type UserWithColor = User & {
   userColor: string;
+};
+
+export type UserWithPasswordHash = User & {
+  passwordHash: string;
 };
 
 export type Word = {
@@ -44,6 +50,18 @@ export const getUserByUsername = cache(async (username: string) => {
   `;
   return user;
 });
+
+export const getUserWithPasswordHashByUsername = cache(
+  async (username: string) => {
+    const [user] = await sql<UserWithPasswordHash[]>`
+    SELECT * FROM
+    users
+    WHERE
+    users.username = ${username.toLowerCase()}
+    `;
+    return user;
+  },
+);
 
 // USER POST
 

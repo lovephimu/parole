@@ -136,6 +136,43 @@ export const createSession = cache(async (token: string, userId: number) => {
   return session;
 });
 
+// WORDS GET
+{
+}
+export const getWords = cache(async () => {
+  const [words] = await sql`
+    SELECT * FROM words
+    `;
+  return words;
+});
+
+export const getWordsByUser = cache(async (userId: number) => {
+  const [words] = await sql`
+    SELECT * FROM words
+    WHERE user_id = ${userId}
+`;
+  return words;
+});
+
+// WORD POST
+
+export const createWord = cache(
+  async (
+    targetWord: string,
+    nativeWord: string,
+    created: Date,
+    userId: number,
+  ) => {
+    const [word] = await sql`
+  INSERT INTO words
+  (target_language, native_language, created, user_id)
+  VALUES
+  (${targetWord}, ${nativeWord}, ${created}, ${userId})
+  RETURNING id, target_language, native_language, created, user_id
+  `;
+  },
+);
+
 // SESSION DELETE
 
 export const deleteExpiredSessions = cache(async () => {

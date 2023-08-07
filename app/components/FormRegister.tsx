@@ -32,27 +32,35 @@ export default function FormRegister() {
 
   return (
     <form onSubmit={(event) => event.preventDefault()}>
-      <label>
-        username:
+      <div className="flex flex-col w-full items-center font-mono mt-16">
+        <label className="text-xl pb-8" htmlFor="username">
+          Username:
+        </label>
+
         <input
-          className="authInput"
+          id="username"
+          className="authInput pb-8 mb-8 w-3/4"
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
         />
-      </label>
-      <label>
-        password:
+
+        <label className="text-xl pb-8" htmlFor="password">
+          Password:
+        </label>
+
         <input
-          className="authInput"
+          id="password"
+          className="authInput pb-8 mb-8 w-3/4"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.currentTarget.value)}
         />
-      </label>
-      <button className="" onClick={async () => await register()}>
-        sign up
-      </button>
-      {error !== '' && <div className="">{error}</div>}
+
+        <button className="mt-8" onClick={async () => await register()}>
+          sign up
+        </button>
+        {error !== '' && <div className="">{error}</div>}
+      </div>
     </form>
   );
 }

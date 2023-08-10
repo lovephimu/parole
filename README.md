@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Parole: Simplistic Vocabulary Trainer
 
-## Getting Started
+# (under construction! this is preview of future functionality)
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**Parole** is a streamlined vocabulary trainer designed to facilitate two fundamental functions: saving words and their corresponding translations, and effectively reinforcing them through repetitive learning.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Effortless Vocabulary Management**: Parole simplifies the process of managing vocabulary by allowing users to save words and their translations.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Repetition for Mastery**: The core of Parole's functionality lies in its intelligent repetition system, which aids users in mastering the words they've inputted.
 
-## Learn More
+- **Minimalistic Design**: Embracing minimalism, Parole offers an uncluttered and intuitive interface that focuses on functionality.
 
-To learn more about Next.js, take a look at the following resources:
+## User Registration and Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Secure Access**: Users can access Parole by registering and logging in using session tokens, ensuring a secure and personalized experience.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Data Management
 
-## Deploy on Vercel
+- **PostgreSQL Integration**: Parole seamlessly communicates with a PostgreSQL database using a RESTful API for efficient data storage and retrieval.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technology Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Parole utilizes **React** and **Next.js** to build a robust and performant backend.
+
+- **Styling**: The user interface is enhanced with the help of **Tailwind CSS**, providing a responsive and visually appealing design.
+
+## How Parole Works
+
+1. **User Registration**: Users sign up for Parole using their credentials and receive session tokens upon successful registration.
+
+2. **Word Entry**: Users can input words along with their translations into the system, building a personal vocabulary list.
+
+3. **Repetition Learning**: Parole employs an intelligent repetition algorithm to schedule word reviews, maximizing learning efficiency.
+
+4. **Review Sessions**: Users engage in review sessions where they are presented with words and must provide their translations, allowing for active recall.
+
+5. **Progress Tracking**: Parole tracks user progress, keeping them informed about their learning journey and accomplishments.

@@ -1,6 +1,6 @@
 # Parole: Simplistic Vocabulary Trainer
 
-# (under construction! this is preview of future functionality)
+## <span style="color: yellow;">(Under construction! This is a preview of future functionality)</span>
 
 ## Overview
 

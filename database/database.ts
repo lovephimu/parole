@@ -163,13 +163,28 @@ export const createWord = cache(
     created: Date,
     userId: number,
   ) => {
-    const [word] = await sql`
+    const [result] = await sql`
   INSERT INTO words
   (target_language, native_language, created, user_id)
   VALUES
   (${targetWord}, ${nativeWord}, ${created}, ${userId})
   RETURNING id, target_language, native_language, created, user_id
   `;
+
+    if (!result) {
+      return;
+    }
+
+    const word: Word = {
+      id: result.id,
+      targetLanguage: result.targetLanguage,
+      nativeLanguage: result.nativeLanguage,
+      created: result.created,
+      repeated: result.repeated,
+      userId: result.userId,
+    };
+
+    return word;
   },
 );
 

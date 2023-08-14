@@ -1,9 +1,27 @@
+import { Route } from 'next';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { getValidSessionByToken } from '../../database/database';
 import FormEnter from '../components/FormEnter';
 
-export default function EnterPage() {
+async function sessionTest() {
+  const sessionTokenCookie = cookies().get('sessionToken');
+
+  const session =
+    sessionTokenCookie &&
+    (await getValidSessionByToken(sessionTokenCookie.value));
+
+  if (!session) redirect('/login' as Route);
+
+  return session.id;
+}
+
+export default async function EnterPage() {
+  const userId = await sessionTest();
+
   return (
     <main>
-      <FormEnter />
+      <FormEnter userId={userId} />
     </main>
   );
 }

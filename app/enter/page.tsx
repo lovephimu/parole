@@ -13,6 +13,8 @@ async function sessionTest() {
 
   if (!session) redirect('/login' as Route);
 
+  console.log('got session');
+
   return session.id;
 }
 

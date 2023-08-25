@@ -56,6 +56,9 @@ export default function FormEnter(props: Props) {
         </div>
         <button className="mt-16" onClick={async () => await enterWord()}>
           Save
+          <div className="bg-parole-dark h-24 w-full">
+            <div className="flex justify-center items-center h-full">Save</div>
+          </div>
         </button>
       </section>
     </section>

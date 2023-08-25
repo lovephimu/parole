@@ -11,8 +11,8 @@ export default function HomePage() {
         </div>
       </section>
       <section className="flex flex-col gap-1 justify-self-end">
-        <LinkBasicButton text="add" link="" />
-        <LinkBasicButton text="review" link="" />
+        <LinkBasicButton text="add" link="/enter" />
+        <LinkBasicButton text="review" link="/review" />
       </section>
     </main>
   );

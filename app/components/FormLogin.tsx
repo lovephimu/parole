@@ -18,13 +18,15 @@ export default function FormLogin() {
     });
     const data: LoginResponseBodyPost = await response.json();
 
+    console.log(data);
+
     if ('error' in data) {
       setError(data.error);
       console.log(data.error);
       return;
     }
 
-    router.push('/add' as Route);
+    router.push('/enter' as Route);
 
     router.refresh();
   }

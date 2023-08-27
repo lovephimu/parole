@@ -49,15 +49,11 @@ export async function POST(
     );
   }
 
-  console.log('Step 2 completed ' + result.data.username);
-
   // 3. compare user credentials with input
 
   const userWithPasswordHash = await getUserWithPasswordHashByUsername(
     result.data.username,
   );
-
-  console.log('Step 3 completed ' + userWithPasswordHash?.username);
 
   // 4. check if there was a valid response
 
@@ -67,8 +63,6 @@ export async function POST(
       { status: 401 },
     );
   }
-
-  console.log('Step 4 completed ');
 
   // 5. hash user input password
 
@@ -102,8 +96,6 @@ export async function POST(
       { status: 500 },
     );
   }
-
-  console.log('should have made db session');
 
   // 6. Create a new cookie
 

@@ -89,7 +89,7 @@ export const getUserBySessionToken = cache(async (token: string) => {
   FROM
     users
   INNER JOIN
-    session ON (
+    sessions ON (
       sessions.token = ${token} AND
       sessions.user_id = users.id AND
       sessions.expiry_timestamp > NOW()
@@ -104,13 +104,15 @@ export const getUserBySessionToken = cache(async (token: string) => {
 
 export const getValidSessionByToken = cache(async (token: string) => {
   const [session] = await sql<{ id: number; token: string }[]>`
-  DELETE FROM
-    sessions
-  WHERE
-    sessions.token = ${token}
-  RETURNING
-    id,
-    token
+  SELECT
+      sessions.id,
+      sessions.token
+    FROM
+      sessions
+    WHERE
+      sessions.token = ${token}
+    AND
+      sessions.expiry_timestamp > now()
   `;
   return session;
 });
@@ -133,6 +135,19 @@ export const createSession = cache(async (token: string, userId: number) => {
 
   await deleteExpiredSessions();
 
+  return session;
+});
+
+export const deleteSession = cache(async (token: string, userId: number) => {
+  const [session] = await sql<{ id: number; token: string }[]>`
+  DELETE FROM
+    sessions
+  WHERE
+    sessions.token = ${token}
+  RETURNING
+    id,
+    token
+  `;
   return session;
 });
 
